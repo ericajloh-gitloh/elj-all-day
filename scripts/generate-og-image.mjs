@@ -1,5 +1,6 @@
 /**
- * OG share card (1200×1200): tall portrait card, full-bleed cover + compact footer.
+ * OG share card (1200×1200): full-bleed photo only (no baked-in text footer).
+ * Text for link previews comes from Open Graph metadata (one native footer in iMessage).
  * Run: npm run generate-og-image
  */
 import { writeFileSync } from "node:fs";
@@ -9,10 +10,7 @@ import sharp from "sharp";
 
 const WIDTH = 1200;
 const HEIGHT = 1200;
-const TEXT_BAND = Math.round(HEIGHT * 0.17);
-const IMAGE_HEIGHT = HEIGHT - TEXT_BAND;
 const CORNER_RADIUS = 32;
-const PAD_X = 48;
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const photoPath = join(
@@ -22,68 +20,13 @@ const photoPath = join(
   "roman-b-IgcV3eno6D4-unsplash.jpg",
 );
 
-function hex(rgb) {
-  return `#${rgb.map((v) => v.toString(16).padStart(2, "0")).join("")}`;
-}
-
-const SANS = "Arial, Helvetica, sans-serif";
-
-function footerTextColors([r, g, b]) {
-  const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
-  if (luminance > 0.55) {
-    return { tagline: "#0a0a12", url: "#5c5652" };
-  }
-  return { tagline: "#ffffff", url: "rgba(255, 255, 255, 0.62)" };
-}
-
 const photo = sharp(photoPath);
 
 const imagePanel = await photo
-  .clone()
-  .resize(WIDTH, IMAGE_HEIGHT, {
+  .resize(WIDTH, HEIGHT, {
     fit: "cover",
     position: "attention",
   })
-  .toBuffer();
-
-const stripH = Math.max(24, Math.round(IMAGE_HEIGHT * 0.06));
-const { data: footerSample } = await sharp(imagePanel)
-  .extract({ left: 0, top: IMAGE_HEIGHT - stripH, width: WIDTH, height: stripH })
-  .resize(1, 1)
-  .raw()
-  .toBuffer({ resolveWithObject: true });
-
-const r = footerSample[0];
-const g = footerSample[1];
-const b = footerSample[2];
-
-const previewHex = hex([r, g, b]);
-const { tagline } = footerTextColors([r, g, b]);
-const TAGLINE = "Strategic design for sports, media &amp; fandom.";
-
-// URL lives in link-preview metadata only — baking it into the image duplicates iMessage chrome.
-const textBandSvg = `
-<svg width="${WIDTH}" height="${TEXT_BAND}" xmlns="http://www.w3.org/2000/svg">
-  <rect width="${WIDTH}" height="${TEXT_BAND}" fill="${previewHex}"/>
-  <text x="${PAD_X}" y="${Math.round(TEXT_BAND * 0.58)}" font-family="${SANS}" font-size="36" font-weight="700" fill="${tagline}">${TAGLINE}</text>
-</svg>
-`;
-
-const textBandPng = await sharp(Buffer.from(textBandSvg)).png().toBuffer();
-
-const flat = await sharp({
-  create: {
-    width: WIDTH,
-    height: HEIGHT,
-    channels: 3,
-    background: { r, g, b },
-  },
-})
-  .composite([
-    { input: imagePanel, left: 0, top: 0 },
-    { input: textBandPng, left: 0, top: IMAGE_HEIGHT },
-  ])
-  .png()
   .toBuffer();
 
 const roundMask = Buffer.from(
@@ -92,7 +35,7 @@ const roundMask = Buffer.from(
   </svg>`,
 );
 
-const card = await sharp(flat)
+const card = await sharp(imagePanel)
   .composite([{ input: roundMask, blend: "dest-in" }])
   .png()
   .toBuffer();
@@ -108,6 +51,4 @@ for (const path of outputs) {
   console.log(`Wrote ${path.replace(root + "/", "")}`);
 }
 
-console.log(
-  `Rendered ${WIDTH}x${HEIGHT} (cover ${WIDTH}x${IMAGE_HEIGHT}, footer ${TEXT_BAND}px @ ${previewHex})`,
-);
+console.log(`Rendered ${WIDTH}x${HEIGHT} (photo only, no text footer)`);

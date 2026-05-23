@@ -22,11 +22,13 @@ const fraunces = Fraunces({
   style: ["normal", "italic"],
 });
 
+const shareTagline = "Strategic design for sports, media & fandom.";
+
 const shareImage = {
   url: SITE.shareImagePath,
   width: 1200,
   height: 1200,
-  alt: "ELJ All Day — Strategic design for sports, media & fandom",
+  alt: shareTagline,
   type: "image/png" as const,
 };
 
@@ -45,7 +47,7 @@ export const metadata: Metadata = {
     title: SITE.name,
   },
   openGraph: {
-    title: "Strategic design for sports, media & fandom.",
+    title: shareTagline,
     description: "\u200B",
     url: SITE.url,
     siteName: "eljallday.com",
@@ -55,7 +57,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Strategic design for sports, media & fandom.",
+    title: shareTagline,
     description: "\u200B",
     images: [SITE.shareImagePath],
   },
