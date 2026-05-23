@@ -26,12 +26,14 @@ function hex(rgb) {
   return `#${rgb.map((v) => v.toString(16).padStart(2, "0")).join("")}`;
 }
 
-function textColors([r, g, b]) {
+const SANS = "Arial, Helvetica, sans-serif";
+
+function footerTextColors([r, g, b]) {
   const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
-  return {
-    primary: luminance > 0.55 ? "#0a0a12" : "#f4f2ef",
-    muted: luminance > 0.55 ? "#5c5652" : "#b8b2aa",
-  };
+  if (luminance > 0.55) {
+    return { tagline: "#0a0a12", url: "#5c5652" };
+  }
+  return { tagline: "#ffffff", url: "rgba(255, 255, 255, 0.62)" };
 }
 
 const photo = sharp(photoPath);
@@ -44,31 +46,25 @@ const imagePanel = await photo
   })
   .toBuffer();
 
-const { data: edgePixels } = await sharp(imagePanel)
-  .extract({ left: 0, top: IMAGE_HEIGHT - 1, width: WIDTH, height: 1 })
+const stripH = Math.max(24, Math.round(IMAGE_HEIGHT * 0.06));
+const { data: footerSample } = await sharp(imagePanel)
+  .extract({ left: 0, top: IMAGE_HEIGHT - stripH, width: WIDTH, height: stripH })
+  .resize(1, 1)
   .raw()
   .toBuffer({ resolveWithObject: true });
 
-let r = 0;
-let g = 0;
-let b = 0;
-for (let i = 0; i < WIDTH; i++) {
-  r += edgePixels[i * 3];
-  g += edgePixels[i * 3 + 1];
-  b += edgePixels[i * 3 + 2];
-}
-r = Math.round(r / WIDTH);
-g = Math.round(g / WIDTH);
-b = Math.round(b / WIDTH);
+const r = footerSample[0];
+const g = footerSample[1];
+const b = footerSample[2];
 
 const previewHex = hex([r, g, b]);
-const { primary, muted } = textColors([r, g, b]);
+const { tagline, url } = footerTextColors([r, g, b]);
 
 const textBandSvg = `
 <svg width="${WIDTH}" height="${TEXT_BAND}" xmlns="http://www.w3.org/2000/svg">
   <rect width="${WIDTH}" height="${TEXT_BAND}" fill="${previewHex}"/>
-  <text x="${PAD_X}" y="92" font-family="Georgia, 'Times New Roman', serif" font-size="38" font-weight="400" fill="${primary}">Strategic design for sports, media &amp; fandom.</text>
-  <text x="${PAD_X}" y="168" font-family="Arial, Helvetica, sans-serif" font-size="24" letter-spacing="0.08em" fill="${muted}">eljallday.com</text>
+  <text x="${PAD_X}" y="88" font-family="${SANS}" font-size="36" font-weight="700" fill="${tagline}">Strategic design for sports, media &amp; fandom.</text>
+  <text x="${PAD_X}" y="158" font-family="${SANS}" font-size="24" font-weight="400" fill="${url}">eljallday.com</text>
 </svg>
 `;
 
