@@ -25,7 +25,7 @@ const fraunces = Fraunces({
 const shareImage = {
   url: SITE.shareImagePath,
   width: 1200,
-  height: 630,
+  height: 1200,
   alt: "ELJ All Day — Strategic design for sports, media & fandom",
   type: "image/png" as const,
 };
@@ -45,18 +45,18 @@ export const metadata: Metadata = {
     title: SITE.name,
   },
   openGraph: {
-    title: `${SITE.name} — Design Advisory for Sports, Media & Fan Platforms`,
-    description: SITE.description,
+    title: "eljallday.com",
+    description: "\u200B",
     url: SITE.url,
-    siteName: SITE.name,
+    siteName: "eljallday.com",
     locale: "en_US",
     type: "website",
     images: [shareImage],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${SITE.name} — Design Advisory for Sports, Media & Fan Platforms`,
-    description: SITE.description,
+    title: "eljallday.com",
+    description: "\u200B",
     images: [SITE.shareImagePath],
   },
   robots: {
