@@ -20,9 +20,32 @@
     padding-right: max(1.25rem, env(safe-area-inset-right, 0px));
   }
 
-  .site-nav__overlay {
-    padding-top: env(safe-area-inset-top, 0px);
-    padding-bottom: env(safe-area-inset-bottom, 0px);
+  body.site-nav-menu-open {
+    overflow: hidden !important;
+    touch-action: none;
+  }
+
+  body.site-nav-menu-open #main-content,
+  body.site-nav-menu-open .hero-campaign {
+    visibility: hidden;
+  }
+
+  .site-nav__overlay-nav {
+    padding-block: 1.25rem;
+  }
+
+  .site-nav__overlay-link {
+    font-size: clamp(2rem, 7.8vw, 2.5rem);
+    min-height: 3.5rem;
+    padding-block: 0.9375rem;
+  }
+
+  .site-nav__overlay-meta--link {
+    min-height: 48px;
+  }
+
+  .site-nav__overlay-cta {
+    min-height: 52px;
   }
 
   /* Section indices — decorative, never clip copy */
@@ -150,14 +173,35 @@
   }
 }
 
+@media (max-width: 430px) {
+  .site-nav__overlay-panel {
+    padding-inline: max(1.25rem, env(safe-area-inset-left, 0px))
+      max(1.25rem, env(safe-area-inset-right, 0px));
+  }
+
+  .site-nav__overlay-link {
+    font-size: clamp(1.9375rem, 7.4vw, 2.25rem);
+    min-height: 3.375rem;
+    padding-block: 0.875rem;
+  }
+
+  .site-nav__overlay-nav {
+    padding-block: 1rem;
+  }
+}
+
 @media (hover: none) and (pointer: coarse) {
+  .site-nav__overlay-close:hover {
+    transform: none;
+  }
   .hover-lift:hover {
     transform: none;
     box-shadow: none;
   }
 
   .site-nav__logo:hover,
-  .site-nav__menu-btn:hover {
+  .site-nav__menu-btn:hover,
+  .site-nav__overlay-link:hover {
     transform: none;
   }
 }

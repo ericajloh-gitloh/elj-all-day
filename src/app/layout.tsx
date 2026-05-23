@@ -33,11 +33,6 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
-  manifest: "/site.webmanifest",
-  icons: {
-    icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
-    apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
-  },
   appleWebApp: {
     title: SITE.name,
   },
@@ -47,14 +42,12 @@ export const metadata: Metadata = {
     url: "https://ericalohjones.com",
     siteName: SITE.name,
     locale: "en_US",
-    images: [{ url: SITE.ogImage, width: 1200, height: 630, alt: SITE.name }],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: `${SITE.name} — Design Advisory for Sports, Media & Fan Platforms`,
     description: SITE.description,
-    images: [SITE.ogImage],
   },
   robots: {
     index: true,

@@ -1,5 +1,6 @@
 /**
- * Renders public/favicon.svg into App Router + public icon assets.
+ * Pattern-based ELJ All Day icons from public/favicon.svg
+ * (diagonal checker + slash — no letterforms)
  * Run: npm run generate-favicons
  */
 import { readFileSync, writeFileSync } from "node:fs";
@@ -8,18 +9,16 @@ import { fileURLToPath } from "node:url";
 import { Resvg } from "@resvg/resvg-js";
 import pngToIco from "png-to-ico";
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
-const root = join(__dirname, "..");
-const publicDir = join(root, "public");
+const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const appDir = join(root, "src", "app");
+const publicDir = join(root, "public");
 const svg = readFileSync(join(publicDir, "favicon.svg"), "utf8");
 
 function renderPng(size) {
-  const resvg = new Resvg(svg, {
+  return new Resvg(svg, {
     fitTo: { mode: "width", value: size },
     background: "#0a0a12",
-  });
-  return resvg.render().asPng();
+  }).render().asPng();
 }
 
 const appAssets = [
@@ -43,11 +42,6 @@ for (const { name, size } of publicAssets) {
   console.log(`Wrote public/${name} (${size}px)`);
 }
 
-const png16 = renderPng(16);
-const png32 = renderPng(32);
-writeFileSync(join(publicDir, "favicon-32.png"), png32);
-
-const ico = await pngToIco([png16, png32]);
+const ico = await pngToIco([renderPng(16), renderPng(32)]);
 writeFileSync(join(appDir, "favicon.ico"), ico);
-writeFileSync(join(publicDir, "favicon.ico"), ico);
-console.log("Wrote favicon.ico (src/app + public)");
+console.log("Wrote src/app/favicon.ico (16 + 32px)");

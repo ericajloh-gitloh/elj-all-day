@@ -8,7 +8,6 @@ export const SITE = {
   linkedInUrl: "https://www.linkedin.com/in/ericajloh/",
   portfolioUrl: "https://ericalohjones.com/",
   location: "Oakland, CA — Available worldwide",
-  ogImage: "https://www.ericalohjones.com/og-image.png",
 } as const;
 
 export const NAV_LINKS = [
