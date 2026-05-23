@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     title: SITE.name,
   },
   openGraph: {
-    title: "eljallday.com",
+    title: "Strategic design for sports, media & fandom.",
     description: "\u200B",
     url: SITE.url,
     siteName: "eljallday.com",
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "eljallday.com",
+    title: "Strategic design for sports, media & fandom.",
     description: "\u200B",
     images: [SITE.shareImagePath],
   },

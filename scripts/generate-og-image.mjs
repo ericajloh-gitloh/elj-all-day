@@ -58,13 +58,14 @@ const g = footerSample[1];
 const b = footerSample[2];
 
 const previewHex = hex([r, g, b]);
-const { tagline, url } = footerTextColors([r, g, b]);
+const { tagline } = footerTextColors([r, g, b]);
+const TAGLINE = "Strategic design for sports, media &amp; fandom.";
 
+// URL lives in link-preview metadata only — baking it into the image duplicates iMessage chrome.
 const textBandSvg = `
 <svg width="${WIDTH}" height="${TEXT_BAND}" xmlns="http://www.w3.org/2000/svg">
   <rect width="${WIDTH}" height="${TEXT_BAND}" fill="${previewHex}"/>
-  <text x="${PAD_X}" y="88" font-family="${SANS}" font-size="36" font-weight="700" fill="${tagline}">Strategic design for sports, media &amp; fandom.</text>
-  <text x="${PAD_X}" y="158" font-family="${SANS}" font-size="24" font-weight="400" fill="${url}">eljallday.com</text>
+  <text x="${PAD_X}" y="${Math.round(TEXT_BAND * 0.58)}" font-family="${SANS}" font-size="36" font-weight="700" fill="${tagline}">${TAGLINE}</text>
 </svg>
 `;
 
