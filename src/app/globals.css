@@ -432,6 +432,28 @@
   color: var(--navy);
 }
 
+.editorial-link-secondary {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-size: var(--text-body-sm);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+  transition:
+    color var(--duration-fast) ease,
+    transform var(--duration-base) var(--ease-editorial);
+}
+
+.editorial-link-secondary:hover {
+  color: var(--green-text);
+  transform: translateX(3px);
+}
+
 html {
   scroll-behavior: auto;
   scroll-padding-top: calc(4.5rem + env(safe-area-inset-top, 0px));

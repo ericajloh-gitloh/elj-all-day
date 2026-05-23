@@ -6,6 +6,7 @@ export const SITE = {
     "Design advisory and creative strategy for sports, media, and fan platforms — product vision, design leadership, and fan-first experiences at scale.",
   calendarUrl: "https://calendar.app.google/p7e4nPqKQ9Rk4rSw8",
   linkedInUrl: "https://www.linkedin.com/in/ericajloh/",
+  portfolioUrl: "https://ericalohjones.com/",
   location: "Oakland, CA — Available worldwide",
   ogImage: "https://www.ericalohjones.com/og-image.png",
 } as const;

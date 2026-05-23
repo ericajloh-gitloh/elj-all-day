@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Fraunces, Geist, Geist_Mono } from "next/font/google";
 import { SkipLink } from "@/components/skip-link";
 import "./globals.css";
@@ -22,6 +22,10 @@ const fraunces = Fraunces({
   style: ["normal", "italic"],
 });
 
+export const viewport: Viewport = {
+  themeColor: "#0a0a12",
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://ericalohjones.com"),
   title: `${SITE.name} — Design Advisory for Sports, Media & Fan Platforms`,
@@ -29,10 +33,21 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
+  manifest: "/site.webmanifest",
   icons: {
-    icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
-    shortcut: ["/favicon.svg"],
-    apple: [{ url: "/favicon.svg", type: "image/svg+xml" }],
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icon-512.png", sizes: "512x512", type: "image/png" },
+    ],
+    shortcut: ["/favicon.ico"],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+  },
+  appleWebApp: {
+    title: SITE.name,
   },
   openGraph: {
     title: `${SITE.name} — Design Advisory for Sports, Media & Fan Platforms`,

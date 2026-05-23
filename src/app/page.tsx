@@ -359,6 +359,15 @@ export default function Home() {
                     with 15+ industry awards recognizing work across fantasy,
                     sports, and betting.
                   </p>
+                  <a
+                    href={SITE.portfolioUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="editorial-link-secondary min-h-11"
+                    aria-label="View full portfolio (opens in new tab)"
+                  >
+                    View full portfolio →
+                  </a>
                 </div>
               </ScrollReveal>
             </div>
