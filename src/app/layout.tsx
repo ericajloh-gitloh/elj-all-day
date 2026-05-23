@@ -22,12 +22,20 @@ const fraunces = Fraunces({
   style: ["normal", "italic"],
 });
 
+const shareImage = {
+  url: SITE.shareImagePath,
+  width: 1200,
+  height: 630,
+  alt: "ELJ All Day — Strategic design for sports, media & fandom",
+  type: "image/png" as const,
+};
+
 export const viewport: Viewport = {
   themeColor: "#0a0a12",
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://ericalohjones.com"),
+  metadataBase: new URL(SITE.url),
   title: `${SITE.name} — Design Advisory for Sports, Media & Fan Platforms`,
   description: SITE.description,
   alternates: {
@@ -39,15 +47,17 @@ export const metadata: Metadata = {
   openGraph: {
     title: `${SITE.name} — Design Advisory for Sports, Media & Fan Platforms`,
     description: SITE.description,
-    url: "https://ericalohjones.com",
+    url: SITE.url,
     siteName: SITE.name,
     locale: "en_US",
     type: "website",
+    images: [shareImage],
   },
   twitter: {
     card: "summary_large_image",
     title: `${SITE.name} — Design Advisory for Sports, Media & Fan Platforms`,
     description: SITE.description,
+    images: [SITE.shareImagePath],
   },
   robots: {
     index: true,

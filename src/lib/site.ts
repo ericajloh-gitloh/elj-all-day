@@ -4,6 +4,8 @@ export const SITE = {
   tagline: "Design that moves the whole game.",
   description:
     "Design advisory and creative strategy for sports, media, and fan platforms — product vision, design leadership, and fan-first experiences at scale.",
+  url: "https://eljallday.com",
+  shareImagePath: "/og-share-card-v2.png",
   calendarUrl: "https://calendar.app.google/p7e4nPqKQ9Rk4rSw8",
   linkedInUrl: "https://www.linkedin.com/in/ericajloh/",
   portfolioUrl: "https://ericalohjones.com/",
