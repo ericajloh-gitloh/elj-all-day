@@ -1,0 +1,310 @@
+/* Desktop experience — 1280px+ editorial polish; mobile unchanged */
+
+@media (min-width: 1280px) {
+  :root {
+    --section-x-lg: 3.5rem;
+    --section-y-lg: 3.5rem;
+    --section-y-xl: 5rem;
+  }
+
+  /* Typography — section headlines use token scale from typography.css */
+  .section-headline .section-headline__title {
+    max-width: 15ch;
+    text-wrap: pretty;
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+  }
+
+  .section-headline--wide .section-headline__title {
+    max-width: 20ch;
+  }
+
+  .section-label-bar {
+    padding-block: 1.125rem;
+  }
+
+  /* Decorative index — keep off headlines */
+  .scroll-section-header__index {
+    font-size: clamp(5rem, 8vw, 7.5rem);
+    right: var(--section-x-lg);
+    top: 0.25rem;
+  }
+
+  /* Section rhythm */
+  .section-divider {
+    height: 56px;
+  }
+
+  .scroll-section__glow {
+    height: 32%;
+    opacity: 0.4;
+  }
+
+  /* Approach — quote + banner band, principles */
+  .approach-editorial__grid {
+    padding-block: 2.5rem 3rem;
+    gap: 2.5rem;
+  }
+
+  .approach-editorial__banner.section-approach-banner {
+    max-height: 400px;
+  }
+
+  .approach-editorial__banner img {
+    object-position: center 42%;
+  }
+
+  #approach .principles-grid .display-card-title {
+    line-height: 1.08;
+  }
+
+  #approach .principles-grid article {
+    padding-block: 2.75rem;
+  }
+
+  #approach .domains-row {
+    padding-block: 2.25rem 2.75rem;
+  }
+
+  /* Practice — intentional image crop */
+  .section-practice-photo img {
+    object-position: center 32%;
+  }
+
+  #practice .display-module-title {
+    max-width: 14ch;
+  }
+
+  /* Testimonials — staggered editorial grid, not a centered stack */
+  .testimonials-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.75rem 2rem;
+    padding-block: 4.5rem 5.5rem !important;
+  }
+
+  .testimonials-list > li:first-child {
+    grid-column: 1 / -1;
+    max-width: 68%;
+  }
+
+  .testimonials-list > li:nth-child(2) {
+    align-self: start;
+    margin-top: 0.5rem;
+  }
+
+  .testimonials-list > li:nth-child(3) {
+    align-self: end;
+    margin-top: 2.5rem;
+  }
+
+  .testimonials-list > li:nth-child(4) {
+    grid-column: 1 / -1;
+    max-width: 72%;
+    margin-left: auto;
+    align-self: start;
+    margin-top: 0.25rem;
+  }
+
+  .testimonials-list blockquote p {
+    line-height: var(--leading-quote);
+  }
+
+  /* About — portrait-led split */
+  #about .about-portrait img {
+    object-position: center 18%;
+  }
+
+  #about .about-bio-lead {
+    max-width: 54ch;
+  }
+
+  #about .about-bio-body {
+    max-width: 58ch;
+    font-size: var(--text-body-lg);
+    line-height: var(--leading-body-relaxed);
+  }
+
+  /* Contact — left-weighted cinematic block */
+  #contact .contact-headline {
+    max-width: 11ch;
+  }
+
+  #contact .contact-meta-stack {
+    gap: 1rem;
+  }
+
+  /* Footer */
+  .site-footer {
+    max-width: 1440px;
+    margin-inline: auto;
+    padding-inline: var(--section-x-lg);
+  }
+
+  /* Image reveal — softer on desktop */
+  .image-reveal__inner {
+    transform: scale(1.04);
+  }
+
+  /* Hover — intentional, consistent */
+  @media (hover: hover) and (pointer: fine) {
+    .hover-lift {
+      transition:
+        transform var(--duration-base) var(--ease-editorial),
+        box-shadow var(--duration-base) var(--ease-editorial),
+        border-color var(--duration-fast) ease;
+    }
+
+    .hover-lift:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 44px rgba(10, 10, 18, 0.11);
+    }
+
+    .editorial-card--dark.hover-lift:hover {
+      box-shadow: 0 22px 52px rgba(0, 0, 0, 0.32);
+      border-color: rgba(200, 255, 0, 0.22);
+    }
+
+    .editorial-card--dark-glass.hover-lift:hover {
+      border-color: rgba(45, 255, 154, 0.45);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .editorial-chip:hover {
+      transform: translateY(-2px);
+    }
+
+    .editorial-chip {
+      transition:
+        color var(--duration-fast) ease,
+        background-color var(--duration-fast) ease,
+        border-color var(--duration-fast) ease,
+        transform var(--duration-base) var(--ease-editorial);
+    }
+
+    .about-portrait:hover img {
+      transform: scale(1.03);
+    }
+  }
+}
+
+@media (min-width: 1440px) {
+  :root {
+    --section-x-lg: 4rem;
+    --section-y-xl: 5.5rem;
+  }
+
+  .section-headline .section-headline__title {
+    max-width: 16ch;
+  }
+
+  .section-headline--wide .section-headline__title {
+    max-width: 18ch;
+  }
+
+  /* Work metrics — readable at scale */
+  .work-editorial__mega-stat.work-editorial__metric-value {
+    font-size: 8.5rem;
+  }
+
+  .work-editorial__metric-suffix--hero {
+    font-size: 3.25rem;
+    margin-bottom: 0.16em;
+  }
+
+  .work-editorial__metric-value--secondary {
+    font-size: 4rem;
+  }
+
+  .work-editorial__metric-suffix {
+    font-size: 1.75rem;
+  }
+
+  .work-editorial__metric-label--hero {
+    font-size: 1.875rem;
+    max-width: 24ch;
+  }
+
+  .work-editorial__metrics-grid {
+    gap: 4rem 3rem;
+  }
+
+  .work-editorial__metrics .work-editorial__metrics-grid {
+    padding-block: 5rem;
+  }
+
+  #work-heading {
+    font-size: 8.25rem;
+  }
+
+  .work-editorial__headline {
+    font-size: 8.25rem;
+  }
+
+  .work-editorial__intro-copy {
+    font-size: 2.625rem;
+    max-width: 42ch;
+  }
+
+  .work-editorial__pillar .work-editorial__card-title--text-only {
+    font-size: 2.5rem;
+  }
+
+  .work-editorial__card-title--text-only-hero {
+    font-size: 3.375rem;
+  }
+
+  .work-editorial__pillar .work-editorial__card-copy--text-only {
+    font-size: 1.125rem;
+  }
+
+  .work-editorial__card-copy--text-only-hero {
+    font-size: 1.25rem;
+  }
+
+  .work-editorial__metric-label {
+    font-size: 1rem;
+  }
+
+  .work-editorial__metric-label--hero {
+    font-size: 1.875rem;
+    max-width: 26ch;
+  }
+
+  .work-editorial__collage {
+    gap: 1.875rem;
+    padding: 3.25rem 4rem 5.5rem;
+  }
+
+  .work-editorial__card-image img {
+    padding: 1rem 1.25rem;
+    object-position: center center;
+  }
+
+  .work-editorial__stock img {
+    object-position: center 38%;
+  }
+
+  .work-editorial__card:hover {
+    transform: rotate(0deg) translateY(-8px);
+    box-shadow: 0 32px 64px rgba(10, 10, 18, 0.16);
+  }
+}
+
+@media (min-width: 1600px) {
+  :root {
+    --section-x-lg: 4.5rem;
+  }
+
+  .hero-campaign__headline {
+    font-size: 11rem;
+  }
+
+  #contact .contact-headline {
+    max-width: 12ch;
+  }
+
+  .testimonials-list blockquote p {
+    max-width: 52ch;
+  }
+}

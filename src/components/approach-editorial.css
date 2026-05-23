@@ -1,0 +1,89 @@
+/* Approach — quote + banner editorial band */
+.approach-editorial {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(
+    128deg,
+    var(--brand-ink) 0%,
+    #1a1035 38%,
+    #0f1a28 100%
+  );
+}
+
+.approach-editorial__mesh {
+  pointer-events: none;
+  position: absolute;
+  inset: -25% -10%;
+  background:
+    radial-gradient(
+      ellipse 50% 40% at 12% 30%,
+      rgba(232, 121, 249, 0.35) 0%,
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse 45% 38% at 88% 20%,
+      rgba(200, 255, 0, 0.22) 0%,
+      transparent 52%
+    ),
+    radial-gradient(
+      ellipse 55% 45% at 75% 90%,
+      rgba(124, 58, 237, 0.28) 0%,
+      transparent 55%
+    );
+}
+
+.approach-editorial__grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 1.5rem;
+  padding-block: 1.75rem;
+}
+
+.approach-editorial__quote {
+  align-self: center;
+  max-width: 36rem;
+}
+
+.approach-editorial__visual {
+  min-width: 0;
+}
+
+.approach-editorial__banner {
+  transform: rotate(1.5deg);
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 10px 12px 0 rgba(0, 0, 0, 0.35);
+}
+
+@media (min-width: 768px) {
+  .approach-editorial__grid {
+    padding-block: 2rem;
+    gap: 1.75rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .approach-editorial__grid {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    align-items: center;
+    gap: 2.25rem;
+    padding-block: 2.25rem 2.75rem;
+  }
+
+  .approach-editorial__quote {
+    max-width: none;
+  }
+
+  .approach-editorial__banner {
+    aspect-ratio: 16 / 10 !important;
+    max-height: 380px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .approach-editorial__banner {
+    transform: none;
+  }
+}

@@ -1,0 +1,39 @@
+/* Editorial quote callout — glass panel + neon accent (shared) */
+.editorial-quote-panel {
+  --eq-lime: var(--brand-lime);
+  --eq-ink: var(--brand-ink);
+  position: relative;
+  margin: 0;
+  padding: 1.25rem 1.25rem 1.25rem 1.5rem;
+  transform: rotate(-2.5deg);
+  border-left: 4px solid var(--eq-lime);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  box-shadow: 8px 10px 0 rgba(0, 0, 0, 0.28);
+}
+
+.editorial-quote-panel__text {
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-size: clamp(1.25rem, 2.8vw, 1.625rem);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.38;
+  color: #fff;
+}
+
+@media (min-width: 1024px) {
+  .editorial-quote-panel {
+    padding: 1.5rem 1.5rem 1.5rem 1.75rem;
+  }
+
+  .editorial-quote-panel__text {
+    font-size: clamp(1.375rem, 2vw, 1.875rem);
+    line-height: 1.36;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .editorial-quote-panel {
+    transform: none;
+  }
+}

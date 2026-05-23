@@ -1,0 +1,195 @@
+/**
+ * ELJ All Day — unified editorial typography system
+ * Labels → headlines → body → captions, with responsive scale at 1024 / 1280 / 1440 / 1600+
+ */
+
+:root {
+  /* Scale tokens */
+  --text-label: 0.6875rem;
+  --text-label-sub: 0.6875rem;
+  --text-caption-sm: 0.75rem;
+  --text-caption: 0.8125rem;
+  --text-body-sm: 0.875rem;
+  --text-body: 0.9375rem;
+  --text-body-lg: 1rem;
+  --text-body-xl: 1.0625rem;
+  --text-cta: 0.75rem;
+  --text-display-sm: clamp(1.375rem, 4.5vw, 1.75rem);
+  --text-display-card: clamp(1.375rem, 3.5vw, 1.75rem);
+  --text-display-module: clamp(1.875rem, 5vw, 2.5rem);
+  --text-display-lead: clamp(1.25rem, 2.8vw, 1.5rem);
+  --text-section-headline: clamp(2rem, 8.5vw, 4.5rem);
+  --text-section-headline-wide: clamp(2rem, 8.5vw, 4.5rem);
+  --text-contact-headline: clamp(2.5rem, 9vw, 5.25rem);
+  --text-quote: clamp(0.9375rem, 2.2vw, 1.0625rem);
+
+  --tracking-eyebrow: 0.14em;
+  --tracking-label: 0.16em;
+  --tracking-label-wide: 0.2em;
+  --leading-display: 1.05;
+  --leading-display-tight: 1.02;
+  --leading-body: 1.62;
+  --leading-body-relaxed: 1.68;
+  --leading-quote: 1.65;
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --text-label: 0.75rem;
+    --text-label-sub: 0.75rem;
+    --text-body: 1rem;
+    --text-body-lg: 1.0625rem;
+    --text-cta: 0.8125rem;
+    --text-display-lead: clamp(1.375rem, 2.2vw, 1.625rem);
+    --text-quote: 1.0625rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  :root {
+    --text-section-headline: clamp(3.25rem, 4vw, 5rem);
+    --text-section-headline-wide: clamp(3rem, 3.8vw, 4.75rem);
+    --text-display-card: 1.875rem;
+    --text-display-module: 2.75rem;
+    --text-display-lead: 1.5rem;
+    --text-contact-headline: clamp(3.5rem, 4.8vw, 5.75rem);
+    --text-quote: 1.125rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  :root {
+    --text-label: 0.8125rem;
+    --text-label-sub: 0.8125rem;
+    --text-body: 1.0625rem;
+    --text-body-lg: 1.125rem;
+    --text-body-xl: 1.1875rem;
+    --text-caption: 0.875rem;
+    --text-display-card: 2rem;
+    --text-display-module: 3.25rem;
+    --text-display-lead: 1.625rem;
+    --text-section-headline: 5.125rem;
+    --text-section-headline-wide: 4.875rem;
+    --text-quote: 1.1875rem;
+  }
+}
+
+@media (min-width: 1600px) {
+  :root {
+    --text-section-headline: 5.5rem;
+    --text-section-headline-wide: 5.125rem;
+    --text-contact-headline: 6rem;
+    --text-display-lead: 1.75rem;
+    --text-body-lg: 1.1875rem;
+    --text-quote: 1.25rem;
+  }
+}
+
+/* ——— Shared utilities ——— */
+
+.eyebrow {
+  font-size: var(--text-label);
+  font-weight: 500;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  line-height: 1.35;
+}
+
+.eyebrow-sub {
+  font-size: var(--text-label-sub);
+  font-weight: 500;
+  letter-spacing: var(--tracking-label-wide);
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+
+.body-copy {
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+  color: var(--muted);
+}
+
+.body-copy-sm {
+  font-size: var(--text-body-sm);
+  line-height: var(--leading-body);
+  color: var(--muted);
+}
+
+.body-copy-lg {
+  font-size: var(--text-body-lg);
+  line-height: var(--leading-body-relaxed);
+  color: var(--muted);
+}
+
+.caption {
+  font-size: var(--text-caption);
+  line-height: var(--leading-body);
+}
+
+.caption-sm {
+  font-size: var(--text-caption-sm);
+  line-height: var(--leading-body);
+}
+
+.display-card-title {
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-size: var(--text-display-card);
+  font-weight: 300;
+  font-style: italic;
+  line-height: var(--leading-display-tight);
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.display-module-title {
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-size: var(--text-display-module);
+  font-weight: 300;
+  font-style: italic;
+  line-height: var(--leading-display-tight);
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.display-lead {
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-size: var(--text-display-lead);
+  font-weight: 300;
+  font-style: italic;
+  line-height: var(--leading-body-relaxed);
+  color: var(--ink);
+}
+
+.section-headline__title {
+  font-size: var(--text-section-headline);
+  line-height: var(--leading-display);
+  letter-spacing: -0.03em;
+}
+
+.section-headline--wide .section-headline__title {
+  font-size: var(--text-section-headline-wide);
+  max-width: 20ch;
+}
+
+.contact-headline {
+  font-size: var(--text-contact-headline);
+  line-height: var(--leading-display-tight);
+}
+
+.testimonial-quote {
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-size: var(--text-quote);
+  font-weight: 300;
+  font-style: italic;
+  line-height: var(--leading-quote);
+}
+
+.contact-body {
+  font-size: var(--text-body-lg);
+  line-height: var(--leading-body-relaxed);
+}
+
+.contact-meta-value {
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+}

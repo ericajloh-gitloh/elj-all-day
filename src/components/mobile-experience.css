@@ -1,0 +1,163 @@
+/* Mobile experience — 390px-first, desktop unchanged */
+
+@media (max-width: 767px) {
+  html,
+  body {
+    overflow-x: clip;
+  }
+
+  #main-content {
+    overflow-x: clip;
+  }
+
+  /* Sticky nav + notch */
+  .site-nav {
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+
+  .site-nav__bar {
+    padding-left: max(1.25rem, env(safe-area-inset-left, 0px));
+    padding-right: max(1.25rem, env(safe-area-inset-right, 0px));
+  }
+
+  .site-nav__overlay {
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  /* Section indices — decorative, never clip copy */
+  .scroll-section-header__index {
+    font-size: clamp(2.75rem, 20vw, 4.5rem);
+    top: 0.125rem;
+    right: max(1rem, env(safe-area-inset-right, 0px));
+    line-height: 1;
+  }
+
+  /* Vertical-only reveals — no horizontal drift / overflow */
+  .scroll-reveal,
+  .scroll-reveal--left,
+  .scroll-reveal--right,
+  .scroll-reveal--up {
+    opacity: 1;
+    transform: none;
+  }
+
+  .scroll-reveal--left,
+  .scroll-reveal--right {
+    transform: none;
+  }
+
+  .scroll-reveal--up {
+    transform: none;
+  }
+
+  /* Kill scroll parallax transforms on small screens */
+  [data-scroll-parallax] {
+    transform: none !important;
+  }
+
+  /* Section headlines — balanced wraps, readable minimums */
+  .section-headline .section-headline__title {
+    text-wrap: balance;
+    line-height: 1.06;
+    font-size: clamp(2.125rem, 9vw, 3rem);
+  }
+
+  .body-copy,
+  .body-copy-sm {
+    font-size: max(var(--text-body-sm), 0.9375rem);
+  }
+
+  .display-card-title {
+    font-size: clamp(1.375rem, 5vw, 1.625rem);
+  }
+
+  .display-module-title {
+    font-size: clamp(1.75rem, 6vw, 2.25rem);
+  }
+
+  .display-lead,
+  .about-bio-lead {
+    font-size: clamp(1.25rem, 4.5vw, 1.5rem);
+    line-height: 1.55;
+  }
+
+  .testimonial-quote {
+    font-size: max(var(--text-quote), 1rem);
+    line-height: 1.62;
+  }
+
+  .contact-headline {
+    font-size: clamp(2.375rem, 10vw, 3.25rem);
+  }
+
+  .contact-body {
+    font-size: var(--text-body);
+  }
+
+  .hero-campaign__deck {
+    font-size: var(--text-body);
+  }
+
+  .hero-campaign__stat-label {
+    font-size: max(var(--text-label), 0.6875rem);
+  }
+
+  /* Banner crops — taller, more usable on phone */
+  .mobile-banner-crop {
+    aspect-ratio: 4 / 3 !important;
+  }
+
+  .mobile-banner-crop img {
+    object-position: center 30%;
+  }
+
+  /* Tap-friendly footer links */
+  .footer-nav-link {
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+    padding: 0.5rem 0.25rem;
+  }
+
+  /* Touch: skip hover lift jitter */
+  .hover-lift:active {
+    transform: translateY(-2px);
+  }
+
+  /* Shorter section dividers on phone */
+  .section-divider {
+    height: 32px;
+  }
+
+  .section-bridge-marquee .section-bridge__track {
+    padding-block: 0.65rem;
+  }
+
+  .section-bridge-marquee .marquee-item {
+    font-size: clamp(1.0625rem, 2.2vw, 1.25rem);
+    padding-inline: 1.5rem;
+  }
+}
+
+@media (max-width: 767px) and (prefers-reduced-motion: no-preference) {
+  .scroll-reveal {
+    transition-duration: 0.65s;
+  }
+
+  .work-reveal {
+    transition-duration: 0.65s;
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .hover-lift:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .site-nav__logo:hover,
+  .site-nav__menu-btn:hover {
+    transform: none;
+  }
+}
