@@ -1,20 +1,35 @@
 /**
- * Syncs branded OG assets from src/app/opengraph-image.png.
- * Edit that PNG (1200×630), then run: npm run generate-og-image
+ * Renders public/og-share-card.svg → App Router OG assets (1200×630).
+ * Run: npm run generate-og-image
  */
-import { copyFileSync, existsSync } from "node:fs";
+import { copyFileSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
+import { Resvg } from "@resvg/resvg-js";
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
-const root = join(__dirname, "..");
-const source = join(root, "src", "app", "opengraph-image.png");
+const root = join(dirname(fileURLToPath(import.meta.url)), "..");
+const svgPath = join(root, "public", "og-share-card.svg");
+const svg = readFileSync(svgPath, "utf8");
 
-if (!existsSync(source)) {
-  console.error("Missing src/app/opengraph-image.png (1200×630 PNG).");
-  process.exit(1);
+const resvg = new Resvg(svg, {
+  fitTo: { mode: "width", value: 1200 },
+  font: {
+    loadSystemFonts: true,
+    defaultFontFamily: "Georgia",
+  },
+});
+
+const png = resvg.render().asPng();
+const appDir = join(root, "src", "app");
+const targets = [
+  join(appDir, "opengraph-image.png"),
+  join(appDir, "twitter-image.png"),
+  join(root, "public", "og-image.png"),
+];
+
+for (const path of targets) {
+  writeFileSync(path, png);
+  console.log(`Wrote ${path.replace(root + "/", "")}`);
 }
 
-copyFileSync(source, join(root, "src", "app", "twitter-image.png"));
-copyFileSync(source, join(root, "public", "og-image.png"));
-console.log("Synced twitter-image.png and public/og-image.png from opengraph-image.png");
+console.log(`Rendered ${png.length} bytes (1200×630)`);

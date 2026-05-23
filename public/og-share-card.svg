@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="mesh" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0a0a12"/>
+      <stop offset="45%" stop-color="#0f0a1a"/>
+      <stop offset="100%" stop-color="#12082a"/>
+    </linearGradient>
+    <linearGradient id="bar" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7c3aed"/>
+      <stop offset="55%" stop-color="#5b21b6"/>
+      <stop offset="100%" stop-color="#1a1035"/>
+    </linearGradient>
+    <linearGradient id="barGlow" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#c8ff00" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#7c3aed" stop-opacity="0"/>
+    </linearGradient>
+    <clipPath id="round">
+      <rect width="1200" height="630" rx="28" ry="28"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#round)">
+    <rect width="1200" height="630" fill="url(#mesh)"/>
+
+    <path fill="#7c3aed" d="M820 0 1200 0 1200 220 920 0Z"/>
+    <path fill="#c8ff00" d="M720 0 1200 0 1200 120 900 0Z"/>
+    <path fill="#0a0a12" d="M780 0 1200 0 1200 80 860 0Z"/>
+    <path fill="#c8ff00" opacity="0.92" d="M880 630 1200 120 1200 630Z"/>
+    <path fill="#7c3aed" d="M760 630 1200 200 1200 630Z"/>
+    <path fill="#0a0a12" d="M820 630 1200 280 1200 630Z"/>
+
+    <rect y="528" width="1200" height="102" fill="url(#bar)"/>
+    <rect y="524" width="1200" height="5" fill="#c8ff00"/>
+    <rect y="528" width="1200" height="40" fill="url(#barGlow)"/>
+
+    <text x="72" y="88" fill="#ffffff" font-family="Georgia, serif" font-size="15" letter-spacing="0.22em">ELJ ALL DAY</text>
+    <text x="72" y="118" fill="#d2d5f9" font-family="Georgia, serif" font-size="22">+</text>
+
+    <text x="72" y="210" fill="#ffffff" font-family="Georgia, serif" font-size="78" font-weight="300">Strategic design</text>
+    <text x="72" y="298" fill="#ffffff" font-family="Georgia, serif" font-size="78" font-weight="300" font-style="italic">for</text>
+    <text x="72" y="396" fill="#c8ff00" font-family="Georgia, serif" font-size="78" font-weight="300" font-style="italic">sports, media &amp; fandom</text>
+
+    <text x="72" y="592" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="22" letter-spacing="0.04em">ericalohjones.com</text>
+  </g>
+</svg>
